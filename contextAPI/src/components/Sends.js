@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { SampleConsumer } from '../sample';
 
 class Sends extends Component {
   state = {
@@ -11,6 +12,7 @@ class Sends extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.props.setValue(this.state.input);
   };
 
   render(){
@@ -23,4 +25,19 @@ class Sends extends Component {
   }
 };
 
-export default Sends;
+const SendsContainer = () => {
+ return( 
+  <SampleConsumer>
+      {
+        ({ state, actions }) => (
+          <Sends 
+            value={state.value}
+            setValue={actions.setValue}
+          />
+        ) 
+      }
+  </SampleConsumer>
+ )
+}
+
+export default SendsContainer;
