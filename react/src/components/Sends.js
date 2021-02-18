@@ -5,6 +5,11 @@ class Sends extends Component {
   state = {
     input : ""
   }
+  componentDidMount(){
+    this.setState({
+      input : this.props.value
+    })
+  }
 
   handleChange = (e) => {
     this.setState({ input : e.target.value })
