@@ -1,34 +1,20 @@
-import React, {useRef, useState } from 'react';
-import ReactCrop from 'react-image-crop';
-import 'react-image-crop/dist/ReactCrop.css';
-import {croppedImgToUrl} from "../imageutils";
+import React, {useState } from 'react';
+import ImageCropper from './ImageCropper';
 
 const ImageCrop = () => {
-  const imageRef= useRef();
   const [imgSrc, setImgSrc] = useState("");
-  const [crop, setCrop] = useState({
-    unit: "%",
-    width: 80,
-    aspect: 1/1
-  });
-  const [cropped, setCropped] = useState({
-    crop: null,
-    url: ""
-  });
-
-  const handleSubmit = async() =>{
-    const generatedUrl = await croppedImgToUrl(imageRef.current, cropped.crop); // <img/>, crop
-    setCropped({url: generatedUrl});
-  };
 
   const handleUploadFile = e => {
     const file = e.target.files[0];
     if(file){
       const reader = new FileReader();
-      reader.addEventListener("load", ()=>{setImgSrc(reader.result)
-      });
+      reader.addEventListener("load", ()=>{setImgSrc(reader.result)});
       reader.readAsDataURL(file);
     }
+  }
+
+  const imgSearchByUrl = url => {
+    console.log(url)
   }
 
   return (
@@ -37,18 +23,12 @@ const ImageCrop = () => {
         <input type="file" accept="image/*" multiple={false} onChange={handleUploadFile}/>
       </div>
       {imgSrc && (
-        <div>
-          <ReactCrop
-            src={imgSrc}
-            crop={crop}
-            onImageLoaded={img=> {imageRef.current = img} }
-            onComplete = {crop=> {setCropped({crop})}}
-            onChange={crop=> {setCrop(crop)}}
-          />
-        </div>
+        <ImageCropper
+          imgSrc={imgSrc}
+          setImgSrc={setImgSrc}
+          imgSearchByUrl= {imgSearchByUrl}
+        />
       )}
-        <img src={cropped.url}/>
-      <button onClick={handleSubmit}>다음</button>
     </>
   );
 }

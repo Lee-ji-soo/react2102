@@ -1,4 +1,4 @@
-export function croppedImgToUrl(image, crop, fileName){
+export function croppedImgToUrl(image, crop){
   const canvas = document.createElement('canvas');
   const scaleX = image.naturalWidth / image.width;
   const scaleY = image.naturalHeight / image.height;
