@@ -2,10 +2,11 @@ import React from 'react';
 import LeftPane from './components/LeftPane';
 import RightPane from './components/RightPane';
 import Immer from './components/Immer';
-import ImageCrop from './components/ImageCrop.js';
+import ImageCrop from './components/ImageCrop_Hook.js';
 import { SampleProvider } from './sample';
 
 const App = () => {
+
   return(
     <>
       <div className="immer">
