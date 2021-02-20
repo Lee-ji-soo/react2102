@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Vending Machine</h1>
+  <div id="selects">
+    <input type="button" data-select="coke" value="콜라(500원)" />
+    <input type="button" data-select="sprite" value="사이다(400원)" />
+    <input type="button" data-select="coffee" value="커피(2000원)" />
+  </div>
+
+  <form id="entry_form">
+    <label for="entry">지폐 투입기</label>
+    <input id="entry" name="entry"
+    placeholder="100원~1000원만 가능"/>
+  </form>
+
+  현재 금액 : <span id="amount"></span>
+
+  <script src="./vendingMachine.js"></script>
+</body>
+</html>
