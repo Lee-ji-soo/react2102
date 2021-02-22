@@ -20,11 +20,6 @@ const setStock = () => {
 
 window.addEventListener("load", setStock);
 
-const refreshInput = () => {
-  $entry.value = "";
-  $entry.focus();
-}
-
 const hasBalance = price => {
   if (paid < price) {
     alert('잔액이 부족합니다.')
@@ -63,7 +58,6 @@ const handleEntry = e => {
       alert('투입 금액 한도 초과!')
     }
   }
-  refreshInput();
   return;
 }
 
