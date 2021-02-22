@@ -31,7 +31,6 @@ const hasBalance = price => {
 
 const hasStock = select => {
   if (stock[select] > 0) {
-    stock[select] -= 1;
     return true;
   } else {
     alert(`${select}는 품절입니다.`)
@@ -45,6 +44,9 @@ const handleBalance = price => {
 }
 
 const handleSelect = select => {
+  stock[select] -= 1;
+
+  //지금까지 출력된 음료수
   selectedArr.push(select);
   if (selectedArr.length > 0) {
     exithtml = selectedArr.map(select => select).join(",");
