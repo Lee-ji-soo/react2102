@@ -32,6 +32,7 @@ const hasStock = select => {
     return true;
   } else {
     alert(`${select}는 품절입니다.`)
+    return;
   }
 }
 
@@ -45,17 +46,20 @@ const handleSelect = select => {
   if (selectedArr.length > 0) {
     exithtml = selectedArr.map(select => select).join(",");
     $exit.innerHTML = exithtml;
-  }
+  } else return;
 }
 
 const handleEntry = e => {
-  const { target: { dataset: { value } } } = e;
+  let { target: { dataset: { value } } } = e;
+  value = Number(value);
+
   if (value) {
-    if (paid < 20000) {
-      paid += Number(value);
+    if ((paid + value) <= 20000) {
+      paid += value;
       $paid.innerHTML = `${paid}원 입니다.`;
     } else {
       alert('투입 금액 한도 초과!')
+      return;
     }
   }
   return;
