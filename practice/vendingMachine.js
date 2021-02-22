@@ -17,16 +17,6 @@ const refreshInput = () => {
   $entry.focus();
 }
 
-const handleEntry = e => {
-  const { target: { dataset: { value } } } = e;
-  if (value) {
-    paid += Number(value);
-    $paid.innerHTML = `${paid}원 입니다.`;
-  }
-  refreshInput();
-  return;
-}
-
 const hasBalance = price => {
   if (paid < price) {
     alert('잔액이 부족합니다.')
@@ -53,6 +43,20 @@ const handleSelect = select => {
     exithtml = selectedArr.map(select => select).join(",");
     $exit.innerHTML = exithtml;
   }
+}
+
+const handleEntry = e => {
+  const { target: { dataset: { value } } } = e;
+  if (value) {
+    if (paid < 20000) {
+      paid += Number(value);
+      $paid.innerHTML = `${paid}원 입니다.`;
+    } else {
+      alert('투입 금액 한도 초과!')
+    }
+  }
+  refreshInput();
+  return;
 }
 
 const handleSelectBtn = e => {
