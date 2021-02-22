@@ -21,9 +21,12 @@ const setStock = () => {
 window.addEventListener("load", setStock);
 
 const hasBalance = price => {
-  if (paid < price) {
+  if (paid >= price) {
+    return true;
+  } else {
     alert('잔액이 부족합니다.')
-  } else return true;
+    return false;
+  }
 }
 
 const hasStock = select => {
@@ -32,7 +35,7 @@ const hasStock = select => {
     return true;
   } else {
     alert(`${select}는 품절입니다.`)
-    return;
+    return false;
   }
 }
 
