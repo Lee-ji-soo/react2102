@@ -44,8 +44,8 @@ const handleBalance = price => {
 }
 
 const handleSelect = select => {
+  //재고관리
   stock[select] -= 1;
-
   //지금까지 출력된 음료수
   selectedArr.push(select);
   if (selectedArr.length > 0) {
