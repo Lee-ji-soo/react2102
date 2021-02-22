@@ -1,4 +1,5 @@
 const $selects = document.querySelector("#selects");
+const $select = $selects.querySelectorAll(".select");
 const $entry = document.querySelector("#entry")
 const $exit = document.querySelector("#exit");
 const $paid = document.querySelector("#paid");
@@ -6,11 +7,18 @@ const $paid = document.querySelector("#paid");
 let paid = 0;
 let selectedArr = [];
 let exithtml = "";
-let stock = {
-  coke: 5,
-  sprite: 5,
-  coffee: 5
+let stock = {};
+
+const setStock = () => {
+  const selectsArr = [];
+  $select.forEach((item) => {
+    const { dataset: { select } } = item;
+    selectsArr.push(select);
+  })
+  selectsArr.map((select) => stock[select] = 5)
 }
+
+window.addEventListener("load", setStock);
 
 const refreshInput = () => {
   $entry.value = "";
