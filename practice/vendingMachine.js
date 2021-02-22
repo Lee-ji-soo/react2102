@@ -61,8 +61,7 @@ const handleEntry = e => {
       alert('투입 금액 한도 초과!')
       return;
     }
-  }
-  return;
+  } else return;
 }
 
 const handleSelectBtn = e => {
