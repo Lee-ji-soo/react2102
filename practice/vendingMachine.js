@@ -1,72 +1,81 @@
 const $selects = document.querySelector("#selects");
-const $entryForm = document.querySelector("#entry_form");
-const $entry = $entryForm.querySelector("#entry")
+const $select = $selects.querySelectorAll(".select");
+const $entry = document.querySelector("#entry")
 const $exit = document.querySelector("#exit");
 const $paid = document.querySelector("#paid");
+
 let paid = 0;
 let selectedArr = [];
 let exithtml = "";
+let stock = {};
 
-const refreshInput = () => {
-  $entry.value = "";
-  $entry.focus();
+const setStock = () => {
+  const selectsArr = [];
+  $select.forEach((item) => {
+    const { dataset: { select } } = item;
+    selectsArr.push(select);
+  })
+  selectsArr.map((select) => stock[select] = 5)
 }
 
-const isNum = value => {
-  String(value).replace(/^\s+|\s+$/g, "");
-  const reg = /^[0-9]*$/;
-  return reg.test(value);
+window.addEventListener("load", setStock);
+
+const hasBalance = price => {
+  if (paid >= price) {
+    return true;
+  } else {
+    alert('잔액이 부족합니다.')
+    return false;
+  }
 }
 
-const isValidUnit = value => {
-  return (value >= 100) && (value % 100 === 0);
+const hasStock = select => {
+  if (stock[select] > 0) {
+    return true;
+  } else {
+    alert(`${select}는 품절입니다.`)
+    return false;
+  }
 }
 
-const isValid = value => {
-  if ((value === "") || (value === null) || (value === undefined)) {
-    alert('값을 입력하세요');
-  } else if (!isNum(value)) {
-    alert('숫자만 입력하세요');
-  } else if (!isValidUnit(value)) {
-    alert('100원, 1000원만 투입하세요');
-  } else return true;
-  refreshInput();
-  return;
+const handleBalance = price => {
+  paid -= price;
+  $paid.innerHTML = paid;
+}
+
+const handleSelect = select => {
+  //재고관리
+  stock[select] -= 1;
+  //지금까지 출력된 음료수
+  selectedArr.push(select);
+  if (selectedArr.length > 0) {
+    exithtml = selectedArr.map(select => select).join(",");
+    $exit.innerHTML = exithtml;
+  } else return;
 }
 
 const handleEntry = e => {
-  const { target: { value } } = e;
-  if (isValid(value)) {
-    paid += Number(value);
-    $paid.innerHTML = `${paid}원 입니다.`;
-  }
-  refreshInput();
-  return;
-}
+  let { target: { dataset: { value } } } = e;
+  value = Number(value);
 
-const isPaid = price => {
-  if (paid < price) {
-    alert('잔액이 부족합니다.')
-  } else return true;
-  return;
-}
-
-const handleSelects = e => {
-  const { target: { dataset: { price, select } } } = e;
-  if (isPaid(price)) {
-
-    selectedArr.push(select);
-    if (selectedArr.length > 0) {
-      exithtml = selectedArr.map(select => select).join(",");
-      $exit.innerHTML = exithtml;
+  if (value) {
+    if ((paid + value) <= 20000) {
+      paid += value;
+      $paid.innerHTML = `${paid}원 입니다.`;
+    } else {
+      alert('투입 금액 한도 초과!')
+      return;
     }
-
-    paid -= price;
-    $paid.innerHTML = paid;
-  }
-
+  } else return;
 }
 
-$entryForm.addEventListener("submit", e => e.preventDefault());
-$entry.addEventListener("change", handleEntry);
-$selects.addEventListener("click", handleSelects);
+const handleSelectBtn = e => {
+  const { target: { dataset: { price, select } } } = e;
+  if (hasBalance(price) && hasStock(select)) {
+    handleBalance(price);
+    handleSelect(select);
+  } else return;
+}
+
+$entry.addEventListener("click", handleEntry);
+$selects.addEventListener("click", handleSelectBtn);
