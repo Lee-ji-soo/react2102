@@ -4,6 +4,7 @@ import RightPane from './components/RightPane';
 import Immer from './components/Immer';
 import ImageCrop from './components/ImageCrop.js';
 import { SampleProvider } from './sample';
+import Modal from './components/Modal';
 
 const App = () => {
 
@@ -20,6 +21,9 @@ const App = () => {
       </SampleProvider>
       <div className="imageCrop">
         <ImageCrop/>
+      </div>
+      <div className="modal">
+        <Modal/>
       </div>
     </>
   );

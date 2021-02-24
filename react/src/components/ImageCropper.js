@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import ReactCrop from 'react-image-crop';
-import {croppedImgToUrl} from "../imageutils";
+import {croppedImgToUrl} from "../utils/imageutils";
 import './custom/cropCustom.scss';
 import styled from "styled-components";
 
