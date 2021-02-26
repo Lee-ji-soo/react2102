@@ -6,7 +6,8 @@ import {
     Button,
     DialogContentText,
     DialogTitle,
-    Modal
+    Modal,
+    Checkbox
 } from "@material-ui/core";
 import styled, {css} from "styled-components";
 
@@ -18,20 +19,25 @@ export const AlertModal2 = ({
     checked
 })=>{
     return(
-        <Modal>
-        <div>
-            <p>{message.title}</p>
-            <p>{message.con}</p>
-        </div>
-        <div>
-            <Checkbox 
-            checked={checked}
-            onChange={handleChange}
-            inputProps={{ 'aria-label': 'secondary checkbox' }}
-            />
-            오늘 하루 보지 않기
-        </div>
-      </Modal>
+        <Modal
+            open={open}
+            onClose={handleCloseModal}
+        >
+            <PopupBox>
+                <div>
+                    <p>{message.title}</p>
+                    <p>{message.con}</p>
+                </div>
+                <div>
+                    <Checkbox 
+                        checked={checked}
+                        onChange={handleChange}
+                        inputProps={{ 'aria-label': 'secondary checkbox' }}
+                    />
+                    오늘 하루 보지 않기
+                </div>
+            </PopupBox>
+        </Modal>
     )
 }
 
@@ -111,6 +117,10 @@ const defaultBox = css`
     padding:13px;
     border-radius:5px;
     background-color:white;
+`
+
+const PopupBox = styled.div`
+    ${defaultBox};
 `
 
 const ImageBox = styled.div`
