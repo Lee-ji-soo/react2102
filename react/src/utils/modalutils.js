@@ -29,7 +29,7 @@ export const AlertModal2 = ({
                     <p>{message.con}</p>
                 </div>
                 <div>
-                    <Checkbox 
+                    <Checkbox
                         checked={checked}
                         onChange={handleChange}
                         inputProps={{ 'aria-label': 'secondary checkbox' }}
@@ -117,6 +117,17 @@ const defaultBox = css`
     padding:13px;
     border-radius:5px;
     background-color:white;
+`
+
+const StyledCheckbox = styled.input`
+ &[type="checkbox"]{
+    width:11px;
+    height:11px;
+    background-color:red;
+    &:checked{
+        background-color:black;
+    }
+ }
 `
 
 const PopupBox = styled.div`

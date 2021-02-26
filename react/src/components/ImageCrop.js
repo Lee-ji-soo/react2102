@@ -10,8 +10,10 @@ const ImageCrop = () => {
       const reader = new FileReader();
       reader.addEventListener("load", ()=>{setImgSrc(reader.result)});
       reader.readAsDataURL(file);
+      console.log(file);
     }
   }
+  console.log(imgSrc);
 
   const imgSearchByUrl = url => {
     console.log(url)

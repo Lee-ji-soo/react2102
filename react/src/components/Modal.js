@@ -10,27 +10,22 @@ const Modal = () => {
       con:""
     }
   })
-  const [checked, setChecked] = useState(false);
+  
+  const [checked, setChecked] = useState(null);
 
   const handleChange = e => {
     setChecked(e.target.checked);
   }
 
-  useEffect(()=>{
-    if(checked){
-      setCookie("lensCookie", 'donotShow', 5);
-    } else return;
-  },[checked])
-  
   const handleCloseModal = () => {
     setModal({
       ...modal, open:false
-    })
+    });
   }
   
   const handleClick = () => {
-    const checHasCookie = hasCookie("lensCookie", "donotShow");
-    if(checHasCookie){
+    const checkHasCookie = hasCookie("lensCookie", "donotShow");
+    if(checkHasCookie){
       setModal({...modal, open:false})
     }else{
       setModal({
@@ -43,6 +38,16 @@ const Modal = () => {
     }
 
   }
+
+  useEffect(()=>{
+    const checkHasCookie = hasCookie("lensCookie", "donotShow");
+    setChecked(checkHasCookie)
+  },[])
+
+  useEffect(()=>{
+    const isShow = checked ? "donotShow" : "show";
+    setCookie("lensCookie", isShow, 2); // name, value, expire
+  },[checked])
 
   const {open, message} = modal
   return(
