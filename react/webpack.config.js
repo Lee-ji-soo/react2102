@@ -1,6 +1,5 @@
 module.exports = {
     entry: [
-        "@babel/polyfill",
         "./src/index.js"
     ],
     module: {
@@ -33,7 +32,7 @@ module.exports = {
     },
     devServer: {
         contentBase: "./dist",
-        port:4000,
+        port: 4000,
         historyApiFallback: true
     }
 

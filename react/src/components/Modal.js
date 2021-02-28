@@ -1,17 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { AlertModal2 } from "../utils/modalutils";
-import {setCookie, hasCookie} from "../utils/jsxutils";
+import { setCookie, hasCookie } from "../utils/jsxutils";
 
 const Modal = () => {
   const [modal, setModal] = useState({
-    open:false,
-    message:{
-      title:"",
-      con:""
+    open: false,
+    message: {
+      title: "",
+      con: ""
     }
   })
-  
-  const [checked, setChecked] = useState(null);
+
+  const [checked, setChecked] = useState(false);
+  const [lensCookie, setLensCookie] = useState(null);
+
+  useEffect(() => {
+    const checkHasCookie = hasCookie("lensCookie", "donotShow");
+    setLensCookie(checkHasCookie);
+    console.log('lensCookie', lensCookie);
+  }, [checked]);
+
+  useEffect(() => {
+    const isShow = lensCookie ? "donotShow" : "show";
+    setCookie("lensCookie", isShow, 2); // name, value, expire
+  }, [lensCookie]);
 
   const handleChange = e => {
     setChecked(e.target.checked);
@@ -19,38 +31,29 @@ const Modal = () => {
 
   const handleCloseModal = () => {
     setModal({
-      ...modal, open:false
+      ...modal, open: false
     });
+    setChecked(false);
   }
-  
+
   const handleClick = () => {
     const checkHasCookie = hasCookie("lensCookie", "donotShow");
-    if(checkHasCookie){
-      setModal({...modal, open:false})
-    }else{
+    if (checkHasCookie) {
+      setModal({ ...modal, open: false })
+    } else {
       setModal({
-        open:true,
-        message:{
-          title:"팝업",
-          con:"오눌하루 보지 않기 기능"
+        open: true,
+        message: {
+          title: "팝업",
+          con: "오눌하루 보지 않기 기능"
         }
       })
     }
 
   }
 
-  useEffect(()=>{
-    const checkHasCookie = hasCookie("lensCookie", "donotShow");
-    setChecked(checkHasCookie)
-  },[])
-
-  useEffect(()=>{
-    const isShow = checked ? "donotShow" : "show";
-    setCookie("lensCookie", isShow, 2); // name, value, expire
-  },[checked])
-
-  const {open, message} = modal
-  return(
+  const { open, message } = modal
+  return (
     <>
       <AlertModal2
         open={open}

@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import ImageCropper from './ImageCropper';
 
 const ImageCrop = () => {
@@ -6,29 +6,27 @@ const ImageCrop = () => {
 
   const handleUploadFile = e => {
     const file = e.target.files[0];
-    if(file){
+    if (file) {
       const reader = new FileReader();
-      reader.addEventListener("load", ()=>{setImgSrc(reader.result)});
+      reader.addEventListener("load", () => { setImgSrc(reader.result) });
       reader.readAsDataURL(file);
-      console.log(file);
     }
   }
-  console.log(imgSrc);
 
   const imgSearchByUrl = url => {
-    console.log(url)
+    //console.log(url)
   }
 
   return (
     <>
       <div>
-        <input type="file" accept="image/*" multiple={false} onChange={handleUploadFile}/>
+        <input type="file" accept="image/*" multiple={false} onChange={handleUploadFile} />
       </div>
       {imgSrc && (
         <ImageCropper
           imgSrc={imgSrc}
           setImgSrc={setImgSrc}
-          imgSearchByUrl= {imgSearchByUrl}
+          imgSearchByUrl={imgSearchByUrl}
         />
       )}
     </>
