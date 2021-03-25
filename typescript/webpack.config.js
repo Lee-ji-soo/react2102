@@ -8,11 +8,21 @@ module.exports = {
     publicPath: "/",
     filename: "[name].js"
   },
-  resolve : {
+  resolve: {
     extensions: [".ts", ".tsx", ".js"]
   },
   module: {
     rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"]
+          }
+        }
+      },
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
