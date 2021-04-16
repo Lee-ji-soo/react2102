@@ -70,3 +70,41 @@ function reverseText(str){
   return String(str[str.length-1]) + reverseText(String(str.slice(0, str.length-1)))
 }
 console.log('reverseText', reverseText(str2))
+
+//soolee  e + reverseText(soole) => eeloos
+//soole  e + reverseText(sool) => eloos
+//sool  l + reverseText(soo) => loos
+//soo  o + reverseText(so) => oos 
+//so  o + reverseText(s) => os 
+//s  s
+
+//각 자릿수의 합 구하기
+
+//loop
+let addResult = 0;
+let num = "123123"; // 12
+
+while(true){
+  if(num.length === 1){
+    addResult += parseInt(num, 10);
+    break;
+  }
+  let remained = num[num.length - 1];
+  addResult += parseInt(remained, 10);
+  num = num.slice(0,num.length-1);
+}
+
+console.log('문자열 합-loop', addResult)
+
+//recursive
+// let addResult2 = 0;
+let num2 = "1231233";
+
+function addResultFunc(num){
+  if(num.length === 1){
+    return parseInt(num, 10)
+  }
+  return addResultFunc(num.slice(0, num.length-1)) + parseInt(num[num.length-1])
+}
+
+console.log("문자열 합-recursive", addResultFunc(num2))
