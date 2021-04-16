@@ -97,7 +97,6 @@ while(true){
 console.log('문자열 합-loop', addResult)
 
 //recursive
-// let addResult2 = 0;
 let num2 = "1231233";
 
 function addResultFunc(num){
@@ -108,3 +107,11 @@ function addResultFunc(num){
 }
 
 console.log("문자열 합-recursive", addResultFunc(num2))
+
+//1231233  func(123123) + 3 => 15
+//123123   func(12312) + 3 => 12
+//12312    func(1231) + 2 => 9
+//1231     func(123) + 1 => 7
+//123      func(12) + 3 => 6
+//12       func(1) + 2 => 3
+//1        1
