@@ -98,10 +98,29 @@ interface Person7 {
   age: number;
 }
 
-interface Korean extends Person7{
+interface Programmer {
+  favorite : string;
+}
+
+interface Korean extends Person7, Programmer{
   isLiveInSeoul : boolean;
 }
 
-let p10 : Korean;
+//interface 교차타입
+interface Person {
+  name: string;
+  age: number;
+}
 
+interface Product{
+  name: string;
+  price: number;
+}
+
+type PP = Person & Product; // 타입의 키가 아니라 타입의 교집합
+const pp: PP = {
+  name: "a",
+  age: 15,
+  price: 15
+}
 
