@@ -4,13 +4,11 @@ import RightPane from './components/RightPane';
 import Immer from './components/Immer';
 import ImageCrop from './components/ImageCrop.js';
 import { SampleProvider } from './sample';
-import SampleContext from "./components/SampleContext";
+import SampleContext from './components/SampleContext';
 import Modal from './components/Modal';
 
-
 const App = () => {
-
-  return(
+  return (
     <>
       {/* <Immer/>
       <SampleProvider>
@@ -19,7 +17,7 @@ const App = () => {
           <RightPane/>
         </div>
       </SampleProvider> */}
-      <SampleContext/>
+      <SampleContext />
       {/* <ImageCrop/>
       <Modal/> */}
     </>

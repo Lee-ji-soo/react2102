@@ -1,32 +1,23 @@
 import React, { Component, createContext } from 'react';
 
 const Context = createContext();
-const { Provider, Consumer : SampleConsumer } = Context;
+const { Provider, Consumer: SampleConsumer } = Context;
 
 class SampleProvider extends Component {
   state = {
-    value : "기본값입니다."
+    value: '기본값입니다.',
   };
 
-  actions = { 
-    setValue : (value) => {
-      this.setState({value})
-    }
+  actions = {
+    setValue: (value) => {
+      this.setState({ value });
+    },
   };
 
-  render(){
+  render() {
     const { state, actions } = this;
     const value = { state, actions };
-    return(
-      <Provider value={value}>
-        {this.props.children}
-      </Provider>
-    )
+    return <Provider value={value}>{this.props.children}</Provider>;
   }
-
-};
-export {
-  SampleProvider,
-  SampleConsumer
 }
-
+export { SampleProvider, SampleConsumer };

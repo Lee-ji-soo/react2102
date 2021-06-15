@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettify": "prettier --write *.js **/*.js"
   },
   "keywords": [],
   "author": "",
@@ -49,6 +50,7 @@
     "dotenv-webpack": "^2.0.0",
     "immer": "^8.0.1",
     "material-ui": "^0.20.2",
+    "prettier": "^2.3.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-image-crop": "^8.6.6",
