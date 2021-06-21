@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import ReactCrop from 'react-image-crop';
-import {croppedImgToUrl} from "../utils/imageutils";
+import { croppedImgToUrl } from "../utils/imageutils";
 import './custom/cropCustom.scss';
 import styled from "styled-components";
 
@@ -9,37 +9,37 @@ const ImageCropper = ({
   setImgSrc,
   imgSearchByUrl
 }) => {
-  const imgRef= useRef();
+  const imgRef = useRef();
   const [crop, setCrop] = useState({
     unit: "%",
     width: 80,
-    aspect: 1/1
+    aspect: 1 / 1
   });
   const [cropped, setCropped] = useState(null);
-  const [zoom, setZoom] = useState(1);  
-  
-  const handleCloseCropper = event =>{
+  const [zoom, setZoom] = useState(1);
+
+  const handleCloseCropper = event => {
     if (event) event.preventDefault()
     setImgSrc("");
   }
-  
-  const handleSubmit = () =>{
+
+  const handleSubmit = () => {
     const generatedUrl = croppedImgToUrl(imgRef.current, cropped); // <img/>, crop
     imgSearchByUrl(generatedUrl)
     handleCloseCropper();
   };
 
-  return(
+  return (
     <CropperWrapper>
       <ReactCrop
         className="react_crop"
         src={imgSrc}
         crop={crop}
-        onImageLoaded={img=> {imgRef.current = img} }
-        onChange={crop=> {setCrop(crop)}}
-        onComplete = {crop=> {setCropped(crop)}}
+        onImageLoaded={img => { imgRef.current = img }}
+        onChange={crop => { setCrop(crop) }}
+        onComplete={crop => { setCropped(crop) }}
         zoom={zoom}
-        onZoomChange={zoom => {setZoom(zoom)}}
+        onZoomChange={zoom => { setZoom(zoom) }}
       />
       <button onClick={handleSubmit}>다음</button>
     </CropperWrapper>
