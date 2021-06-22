@@ -7,7 +7,7 @@ const Child = ({ items }) => {
   // const { match: { params: { fab } } } = props;
 
   useEffect(() => {
-    console.log(items, "render");
+    console.log('CHild - components', items, "render");
   }, [])
 
   return (
@@ -26,12 +26,13 @@ function UseEffect() {
 
   const data = [{ age: 1 }]
   const checkIsTrue = () => {
-    console.log(data[0].age)
+    console.log('checkTrue', data[0].age)
     return data[0].age === 1
   }
   // Data does't start loading
   // until *after* Parent is mounted
   useEffect(() => {
+    console.log("item useEffect - start", items)
     setItems(checkIsTrue());
   }, []);
 
