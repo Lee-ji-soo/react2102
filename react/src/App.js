@@ -16,9 +16,9 @@ const App = () => {
     <BrowserRouter>
       <Header />
       <Switch>
-        <Route path="/home" component={Home} />
-        <Route path="/effect" component={UseEffect} />
-        <Route path="/effect/:fab" component={UseEffect} />
+        <Route exact path="/" component={Home} />
+        {/* <Route exact path="/effect" component={UseEffect} /> */}
+        <Route exact path="/effect" component={UseEffect} />
         {/* <Redirect path="/*" to="/" /> */}
         {/* <Immer/>
         <SampleProvider>

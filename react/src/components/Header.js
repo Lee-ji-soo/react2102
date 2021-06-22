@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <>
-      <Link to="/effect/123">useEffect</Link>
+      <Link to="/effect">useEffect</Link>
     </>
   )
 };
