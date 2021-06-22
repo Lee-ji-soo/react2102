@@ -6,9 +6,9 @@ const UseEffect = (props) => {
   console.log(history.location.pathname)
 
   const { match: { params: { fab } } } = props;
-  console.log(fab)
+  console.log('fab', fab)
   useEffect(() => {
-    console.log(fab)
+    console.log('fab', fab)
   }, [])
 
   return (

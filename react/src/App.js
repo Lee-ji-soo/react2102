@@ -19,7 +19,7 @@ const App = () => {
         <Route path="/home" component={Home} />
         <Route path="/effect" component={UseEffect} />
         <Route path="/effect/:fab" component={UseEffect} />
-        <Redirect path="/*" to="/" />
+        {/* <Redirect path="/*" to="/" /> */}
         {/* <Immer/>
         <SampleProvider>
           <div className="panes">
