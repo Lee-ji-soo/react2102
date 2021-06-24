@@ -32,9 +32,11 @@ function UseEffect() {
   // Data does't start loading
   // until *after* Parent is mounted
   useEffect(() => {
-    console.log("item useEffect - start", items)
-    setItems(checkIsTrue());
-  }, []);
+    if (items.length) { // 2. 시점 제어 - 아이템이 존재해야 실행
+      console.log("item useEffect - start", items)
+      setItems(checkIsTrue());
+    }
+  }, [data]); // 1. 시점 제어 - 데이터 참조 
 
   // Solution:
   // don't render Child until `items` is ready!
