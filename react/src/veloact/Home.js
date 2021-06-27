@@ -1,10 +1,10 @@
-import Rect from "react";
+import React from "react";
 import Hello from "./Hello";
 import Wrapper from "./Wrapper";
 
-function Home(){
-  return(
-    <Hello name="react" color="red"/>
+function Home() {
+  return (
+    <Hello name="react" color="red" />
   )
 };
 
