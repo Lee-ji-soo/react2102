@@ -5,9 +5,7 @@ import Home from "./veloact/Home";
 const VeloApp = () => {
   return (
     <>
-      <h1>ㅗㅑ</h1>
       <BrowserRouter>
-        <div>helo</div>
         <Switch>
           <Route exact path="/" component={Home} />
           <Redirect path="/*" to="/" />
