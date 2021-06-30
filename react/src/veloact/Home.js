@@ -1,11 +1,14 @@
-import React from "react";
-import Hello from "./Hello";
-import Wrapper from "./Wrapper";
+import React from 'react';
+import Hello from './Hello';
+import Wrapper from './Wrapper';
 
 function Home() {
   return (
-    <Hello name="react" color="red" />
-  )
-};
+    <Wrapper>
+      <Hello name="react" color="red" />
+      <Hello color="pink" />
+    </Wrapper>
+  );
+}
 
 export default Home;
