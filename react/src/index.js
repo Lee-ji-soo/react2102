@@ -5,4 +5,4 @@ import VeloApp from "./VeloApp";
 import PracApp from "./PracApp";
 import ContextApp from "./ContextApp";
 
-ReactDOM.render(<ContextApp />, document.querySelector('#root'));
+ReactDOM.render(<VeloApp />, document.querySelector('#root'));
