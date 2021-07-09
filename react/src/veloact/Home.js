@@ -1,12 +1,32 @@
 import React from 'react';
 import Hello from './Hello';
 import Wrapper from './Wrapper';
+import CreateUser from "./CreateUser";
+import UserList from "./UserList";
 
 function Home() {
+  const users = [
+    {
+      id: 1,
+      username: 'velopert',
+      email: 'public.velopert@gmail.com',
+    },
+    {
+      id: 2,
+      username: 'tester',
+      email: 'tester@example.com',
+    },
+    {
+      id: 3,
+      username: 'liz',
+      email: 'liz@example.com',
+    },
+  ];
+
   return (
     <Wrapper>
-      <Hello name="react" color="red" />
-      <Hello color="pink" />
+      <CreateUser />
+      <UserList users={users}/>
     </Wrapper>
   );
 }
