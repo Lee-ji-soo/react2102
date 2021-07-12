@@ -1,5 +1,4 @@
 import React from 'react';
-import Modal from './components/Modal';
 import UseEffect from "./components/UseEffect";
 import UseMemo from "./components/UseMemo";
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
