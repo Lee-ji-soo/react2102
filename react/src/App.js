@@ -5,7 +5,6 @@ import Immer from './components/Immer';
 import ImageCrop from './components/ImageCrop.js';
 import { SampleProvider } from './sample';
 import SampleContext from './components/SampleContext';
-import Modal from './components/Modal';
 import UseEffect from "./components/UseEffect";
 import UseMemo from "./components/UseMemo";
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
