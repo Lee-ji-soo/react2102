@@ -1,10 +1,13 @@
 import React from 'react';
+<<<<<<< HEAD
 import LeftPane from './components/LeftPane';
 import RightPane from './components/RightPane';
 import Immer from './components/Immer';
 import ImageCrop from './components/ImageCrop.js';
 import { SampleProvider } from './sample';
 import SampleContext from './components/SampleContext';
+=======
+>>>>>>> 92782ac... 사용하지 않는 import 삭제(2)
 import UseEffect from "./components/UseEffect";
 import UseMemo from "./components/UseMemo";
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
