@@ -1,24 +1,19 @@
 import React, { useRef } from 'react';
 
-function User({ user }) {
+function User({ user, onRemove }) {
   return (
     <div>
       <b>{user.username}</b>
       <span>{user.email}</span>
+      <button onClick={() => onRemove(user.id)}> 삭제 </button>
     </div>
   );
 }
-function UserList({ users }) {
-  const nextId = useRef(4);
-
-  const onCreate = () => {
-    nextId.current += 1;
-  };
-
+function UserList({ users, onRemove}) {
   return (
     <div>
       {users.map((user, index) => (
-        <User key={index} user={user} />
+        <User key={index} user={user} onRemove={onRemove} />
       ))}
     </div>
   );
