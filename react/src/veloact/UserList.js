@@ -1,25 +1,30 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
-function User({ user, onRemove }) {
+function User({ user, onRemove, onToggle}) {
   return (
     <div>
-      <b>{user.username}</b>
+      <b
+        style={{
+          cursor: 'pointer',
+          color: user.active ? 'green' : 'black',
+        }}
+        onClick={() => {
+          onToggle(user.id);
+        }}
+      >
+        {user.username}
+      </b>
       <span>{user.email}</span>
       <button onClick={() => onRemove(user.id)}>삭제</button>
     </div>
   );
 }
-function UserList({ users, onRemove }) {
-  const nextId = useRef(4);
 
-  const onCreate = () => {
-    nextId.current += 1;
-  };
-
+function UserList({ users, onRemove, onToggle }) {
   return (
     <div>
       {users.map((user, index) => (
-        <User key={index} user={user} onRemove={onRemove} />
+        <User key={index} user={user} onRemove={onRemove} onToggle={onToggle} />
       ))}
     </div>
   );
