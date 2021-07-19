@@ -60,13 +60,17 @@ function Home() {
     nextId.current += 1;
   };
 
-  const onRemove = id => {
-    setUsers(users.filter(user => user.id !== id))
+  const onRemove = (id) => {
+    setUsers(users.filter((user) => user.id !== id));
   };
 
-  const onToggle = () => {
-    //
-  }
+  const onToggle = (id) => {
+    setUsers(
+      users.map((user) =>
+        user.id === id ? { ...user, active: !user.active } : user,
+      ),
+    );
+  };
 
   return (
     <Wrapper>
