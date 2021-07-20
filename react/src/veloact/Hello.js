@@ -5,7 +5,7 @@ function Hello({ color, name }) {
 }
 
 Hello.defaultProps = {
-  name: "이름없음 - develp examine"
+  name: "이름없음 - develp examine - add new branch"
 }
 
 export default Hello;
