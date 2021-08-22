@@ -12,7 +12,7 @@ const VeloApp = () => {
           <Route exact path="/" component={Home} />
           <Route exact path="/counter" component={Counter} />
           <Route exact path='/input' component={InputSample}/>
-          <Redirect path="/*" to="/" />
+          <Redirect path="/*" to="/00" />
         </Switch>
       </BrowserRouter>
     </>
