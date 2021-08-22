@@ -1,5 +1,6 @@
 const path = require("path");
-const webpack = require('webpack');
+const webpack = require("webpack");
+const RefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
 //웹팩 설정
 module.exports = {
@@ -24,22 +25,30 @@ module.exports = {
               "@babel/preset-env",
               {
                 targets: { browsers: ["> 1% in KR"] }, //크롬 최신 버전만 호환 ex) browerslist: last 1 version , > 1% , maintained node versions, not dead...
-                debug: true,
               },
             ],
             "@babel/preset-react",
           ], //plugins의 모음 = 하나의 preset
-          plugins: ["@babel/plugin-proposal-class-properties"],
+          plugins: [
+            "@babel/plugin-proposal-class-properties",
+            "react-refresh/babel",
+          ],
         },
       },
     ],
   },
   //연결,
 
-  plugins: [new webpack.LoaderOptionsPlugin({ debug: true })], // 확장 프로그램
+  plugins: [new RefreshWebpackPlugin()], // 확장 프로그램
 
   output: {
     path: path.join(__dirname, "dist"),
     filename: "app.js",
+    publicPath: '/dist/',
   }, //출력
+
+  devServer: {
+    publicPath: '/dist/',
+    hot: true,
+  },
 };
